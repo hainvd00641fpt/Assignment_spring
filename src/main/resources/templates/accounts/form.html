@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form create account</h2>
+        <form th:action="@{/accounts/create}" method="post" th:object="${account}">
+            <div>
+                Name:<input type="text" th:field="*{name}">
+                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+            </div>
+            <br>
+            <div>
+                Email:<input type="text" th:field="*{email}">
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+            </div>
+            <br>
+            <div>
+                Password:<input type="password" th:field="*{password}">
+                <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+            </div>
+            <br>
+            <div>
+                Student Code: <input type="text" th:field="*{stuCode}">
+                <span class="error" th:if="${#fields.hasErrors('stuCode')}" th:error="*{stuCode}">Student Code Error</span>
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+</body>
+</html>
